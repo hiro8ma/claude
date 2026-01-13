@@ -25,14 +25,31 @@ cargo clippy                # リント
 cargo fmt                   # フォーマット
 ```
 
+### TypeScript
+
+```bash
+tsc                         # コンパイル
+tsc --noEmit                # 型チェックのみ
+npm test                    # テスト
+npm run lint                # リント (ESLint)
+npm run format              # フォーマット (Prettier)
+```
+
 ## 開発ガイド
 
 詳細は `.claude/` を参照。
+
+### 共通（言語非依存）
+
+| カテゴリ | 内容 |
+|---------|------|
+| [architecture/](.claude/architecture/) | ヘキサゴナル/クリーン、DDD、イベント駆動（CQRS、Saga）、モノレポ |
 
 ### Go
 
 | カテゴリ | 内容 |
 |---------|------|
+| [architecture/](.claude/go/architecture/) | プロジェクトレイアウト（cmd, internal, pkg等） |
 | [guidelines/](.claude/go/guidelines/) | インターフェース、並行処理、エラー処理、panic/exit、enum、atomic、globals、init、field-tags、設計原則、パッケージ設計 |
 | [performance/](.claude/go/performance/) | 最適化（strconv、容量ヒント、文字列連結等） |
 | [style/](.claude/go/style/) | 命名規則、変数宣言、構造体、フォーマット、リテラル、ドキュメンテーション、インポート、文字列処理 |
@@ -51,3 +68,12 @@ cargo fmt                   # フォーマット
 | [linting/](.claude/rust/linting/) | Clippy/rustfmt設定 |
 | [cargo/](.claude/rust/cargo/) | Cargo.toml規約 |
 | [commands/](.claude/rust/commands/) | ビルド、テストコマンド |
+
+### TypeScript
+
+| カテゴリ | 内容 |
+|---------|------|
+| [style/](.claude/typescript/style/) | 命名規則、フォーマット |
+| [guidelines/](.claude/typescript/guidelines/) | 変数、関数、クラス、型システム、制御フロー、禁止事項 |
+| [linting/](.claude/typescript/linting/) | ESLint/Prettier設定 |
+| [commands/](.claude/typescript/commands/) | ビルド、テストコマンド |
