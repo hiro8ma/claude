@@ -1,13 +1,14 @@
 # Go開発ガイド
 
-Uber Go Style Guideに準拠したGo開発ガイドライン。
+Uber Go Style Guide / Google Go Style Guideに基づくGo開発ガイドライン。
 
 ## ディレクトリ構成
 
 ```
 go/
 ├── guidelines/          # ガイドライン（コアルール）
-│   ├── interface.md         # インターフェース
+│   ├── interface.md         # インターフェース設計
+│   ├── interfaces.md        # インターフェース使用規則
 │   ├── concurrency.md       # 並行処理
 │   ├── error.md             # エラー処理
 │   ├── panic-exit.md        # Panic/Exit
@@ -15,7 +16,9 @@ go/
 │   ├── atomic.md            # アトミック操作
 │   ├── globals.md           # グローバル変数
 │   ├── init.md              # init()関数
-│   └── field-tags.md        # フィールドタグ
+│   ├── field-tags.md        # フィールドタグ
+│   ├── principles.md        # 設計原則（明確性・単純性・簡潔性）
+│   └── packages.md          # パッケージ設計
 │
 ├── performance/         # パフォーマンス
 │   └── optimization.md      # 最適化
@@ -25,7 +28,10 @@ go/
 │   ├── variable.md          # 変数宣言
 │   ├── struct.md            # 構造体
 │   ├── formatting.md        # フォーマット
-│   └── literals.md          # リテラル・引数
+│   ├── literals.md          # リテラル・引数
+│   ├── documentation.md     # ドキュメンテーション
+│   ├── imports.md           # インポート
+│   └── strings.md           # 文字列処理
 │
 ├── patterns/           # パターン
 │   ├── test.md              # テストパターン
@@ -43,4 +49,5 @@ go/
 ## 参考
 
 - [Uber Go Style Guide](https://github.com/uber-go/guide)
+- [Google Go Style Guide](https://google.github.io/styleguide/go/)
 - [Effective Go](https://go.dev/doc/effective_go)

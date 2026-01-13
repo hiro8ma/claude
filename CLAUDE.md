@@ -33,9 +33,9 @@ cargo fmt                   # フォーマット
 
 | カテゴリ | 内容 |
 |---------|------|
-| [guidelines/](.claude/go/guidelines/) | インターフェース、並行処理、エラー処理、panic/exit、enum、atomic、globals、init、field-tags |
+| [guidelines/](.claude/go/guidelines/) | インターフェース、並行処理、エラー処理、panic/exit、enum、atomic、globals、init、field-tags、設計原則、パッケージ設計 |
 | [performance/](.claude/go/performance/) | 最適化（strconv、容量ヒント、文字列連結等） |
-| [style/](.claude/go/style/) | 命名規則、変数宣言、構造体、フォーマット、リテラル |
+| [style/](.claude/go/style/) | 命名規則、変数宣言、構造体、フォーマット、リテラル、ドキュメンテーション、インポート、文字列処理 |
 | [patterns/](.claude/go/patterns/) | テスト、Functional Options、時間処理 |
 | [linting/](.claude/go/linting/) | golangci-lint設定 |
 | [commands/](.claude/go/commands/) | ビルド、テストコマンド |

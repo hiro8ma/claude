@@ -27,54 +27,7 @@ func TestAdd(t *testing.T) {
 }
 ```
 
-## テーブルテスト内での条件分岐禁止
-
-テーブルテスト内で条件分岐が必要な場合は、別のテストに分割する。
-
-```go
-// Bad
-for _, tt := range tests {
-    t.Run(tt.name, func(t *testing.T) {
-        got, err := Process(tt.input)
-        if tt.wantErr {
-            if err == nil {
-                t.Fatal("expected error")
-            }
-            return
-        }
-        if err != nil {
-            t.Fatal(err)
-        }
-        // さらに条件分岐...
-    })
-}
-
-// Good - エラーケースは別テストに
-func TestProcess_Success(t *testing.T) {
-    tests := []struct{ ... }{...}
-    for _, tt := range tests {
-        t.Run(tt.name, func(t *testing.T) {
-            got, err := Process(tt.input)
-            if err != nil {
-                t.Fatal(err)
-            }
-            // アサーション
-        })
-    }
-}
-
-func TestProcess_Error(t *testing.T) {
-    tests := []struct{ ... }{...}
-    for _, tt := range tests {
-        t.Run(tt.name, func(t *testing.T) {
-            _, err := Process(tt.input)
-            if err == nil {
-                t.Fatal("expected error")
-            }
-        })
-    }
-}
-```
+フィールド名を使用（特に垂直スペースや同じ型が隣接する場合）。
 
 ## テスト関数の命名
 
@@ -87,35 +40,168 @@ func TestUser_Delete(t *testing.T) {}
 func TestUser_Delete_NotFound(t *testing.T) {}
 ```
 
+## 失敗メッセージ
+
+関数名、入力、実際値、期待値を含める。
+
+```go
+// Good
+t.Errorf("Process(%q) = %v, want %v", input, got, want)
+
+// Bad
+t.Error("wrong result")
+```
+
+## アサーションライブラリ
+
+標準の方法を使用。DSLを避ける。
+
+```go
+// Good
+if got != want {
+    t.Errorf("Process() = %v, want %v", got, want)
+}
+
+// Bad
+assert.Equal(t, want, got)
+```
+
+## 比較
+
+`cmp.Equal`と`cmp.Diff`を優先。
+
+```go
+import "github.com/google/go-cmp/cmp"
+
+if diff := cmp.Diff(want, got); diff != "" {
+    t.Errorf("Process() mismatch (-want +got):\n%s", diff)
+}
+```
+
+## エラーセマンティクス
+
+文字列比較ではなく`errors.Is`を使用。
+
+```go
+// Good
+if !errors.Is(err, ErrNotFound) {
+    t.Errorf("got error %v, want ErrNotFound", err)
+}
+
+// Bad
+if err.Error() != "not found" {
+    t.Error("wrong error")
+}
+```
+
+## Keep Going
+
+可能な限り`t.Error`を使用（`t.Fatal`ではなく）。
+
+```go
+// Good - 複数のプロパティをテスト
+if got.Name != want.Name {
+    t.Errorf("Name = %q, want %q", got.Name, want.Name)
+}
+if got.Age != want.Age {
+    t.Errorf("Age = %d, want %d", got.Age, want.Age)
+}
+```
+
+## テーブルテスト内での条件分岐禁止
+
+別のテストに分割する。
+
+```go
+// Good - エラーケースは別テストに
+func TestProcess_Success(t *testing.T) { ... }
+func TestProcess_Error(t *testing.T) { ... }
+```
+
 ## サブテスト
 
-`t.Run()`で関連テストをグループ化。
+説明的な名前。スペースと特殊文字を避ける。
 
 ```go
 func TestUser(t *testing.T) {
-    t.Run("Create", func(t *testing.T) {
-        // ...
-    })
-    t.Run("Delete", func(t *testing.T) {
-        // ...
-    })
+    t.Run("Create", func(t *testing.T) { ... })
+    t.Run("Delete", func(t *testing.T) { ... })
 }
 ```
+
+サブテストは独立して実行可能に。
 
 ## 並列テスト
 
 独立したテストは`t.Parallel()`で並列実行。
 
 ```go
-func TestProcess(t *testing.T) {
-    tests := []struct{...}{...}
+for _, tt := range tests {
+    tt := tt  // ループ変数をキャプチャ
+    t.Run(tt.name, func(t *testing.T) {
+        t.Parallel()
+        // テストロジック
+    })
+}
+```
 
-    for _, tt := range tests {
-        tt := tt  // ループ変数をキャプチャ
-        t.Run(tt.name, func(t *testing.T) {
-            t.Parallel()
-            // テストロジック
-        })
+## ヘルパー関数
+
+`t.Helper()`でマーク。
+
+```go
+func mustCreateTempFile(t *testing.T, content string) string {
+    t.Helper()
+    f, err := os.CreateTemp("", "test")
+    if err != nil {
+        t.Fatalf("failed to create temp file: %v", err)
     }
+    return f.Name()
+}
+```
+
+## ゴルーチンでのテスト
+
+テスト関数以外のゴルーチンから`t.Fatal()`を呼ばない。
+
+```go
+// Good
+func TestConcurrent(t *testing.T) {
+    errCh := make(chan error, 1)
+    go func() {
+        errCh <- process()
+    }()
+    if err := <-errCh; err != nil {
+        t.Fatal(err)  // テストゴルーチンから
+    }
+}
+```
+
+## テストパッケージ
+
+- 同じパッケージ: 未エクスポート識別子にアクセス可能
+- `_test`サフィックス: 統合テストや循環依存の場合
+
+```go
+// unit_test.go
+package mypackage
+
+// integration_test.go
+package mypackage_test
+```
+
+## セットアップのスコープ
+
+必要なテストでのみセットアップを呼び出す。
+
+```go
+// Good
+func TestWithData(t *testing.T) {
+    data := mustLoadDataset(t)
+    // ...
+}
+
+func TestWithoutData(t *testing.T) {
+    // dataは不要
 }
 ```
