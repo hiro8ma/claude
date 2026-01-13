@@ -6,6 +6,9 @@ Uber Go Style Guide / Google Go Style Guideに基づくGo開発ガイドライ�
 
 ```
 go/
+├── architecture/        # アーキテクチャ（Go固有）
+│   └── project-layout.md    # プロジェクトレイアウト
+│
 ├── guidelines/          # ガイドライン（コアルール）
 │   ├── interface.md         # インターフェース設計
 │   ├── interfaces.md        # インターフェース使用規則
@@ -46,8 +49,17 @@ go/
     └── test.md              # テスト実行
 ```
 
+## 言語共通アーキテクチャ
+
+[.claude/architecture/](../architecture/) を参照:
+- ヘキサゴナル/クリーンアーキテクチャ
+- ドメイン駆動設計 (DDD)
+- イベント駆動アーキテクチャ
+- モノレポ構成
+
 ## 参考
 
 - [Uber Go Style Guide](https://github.com/uber-go/guide)
 - [Google Go Style Guide](https://google.github.io/styleguide/go/)
+- [golang-standards/project-layout](https://github.com/golang-standards/project-layout)
 - [Effective Go](https://go.dev/doc/effective_go)
