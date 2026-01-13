@@ -1,6 +1,6 @@
 # Rust開発ガイド
 
-Rust公式スタイルガイドとベストプラクティスに準拠。
+Rust公式スタイルガイドとAPI Guidelinesに準拠。
 
 ## ディレクトリ構成
 
@@ -19,6 +19,18 @@ rust/
 │   ├── expressions.md       # 式
 │   ├── statements.md        # 文
 │   └── types.md             # 型
+│
+├── api/                # API設計ガイドライン
+│   ├── naming.md            # API命名規則
+│   ├── interop.md           # 相互運用性
+│   ├── documentation.md     # ドキュメンテーション
+│   ├── predictability.md    # 予測可能性
+│   ├── flexibility.md       # 柔軟性
+│   ├── type-safety.md       # 型安全性
+│   ├── dependability.md     # 信頼性
+│   ├── debuggability.md     # デバッグ可能性
+│   ├── future-proofing.md   # 将来対応
+│   └── macros.md            # マクロ設計
 │
 ├── patterns/           # パターン
 │   ├── builder.md           # Builderパターン
@@ -40,5 +52,5 @@ rust/
 ## 参考
 
 - [Rust Style Guide](https://github.com/rust-lang/rust/tree/HEAD/src/doc/style-guide/src)
-- [The Rust Programming Language](https://doc.rust-lang.org/book/)
 - [Rust API Guidelines](https://rust-lang.github.io/api-guidelines/)
+- [The Rust Programming Language](https://doc.rust-lang.org/book/)

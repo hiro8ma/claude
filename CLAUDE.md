@@ -29,7 +29,7 @@ cargo fmt                   # フォーマット
 
 詳細は `.claude/` を参照。
 
-### Go（Uber Go Style Guide準拠）
+### Go
 
 | カテゴリ | 内容 |
 |---------|------|
@@ -40,12 +40,13 @@ cargo fmt                   # フォーマット
 | [linting/](.claude/go/linting/) | golangci-lint設定 |
 | [commands/](.claude/go/commands/) | ビルド、テストコマンド |
 
-### Rust（公式スタイルガイド準拠）
+### Rust
 
 | カテゴリ | 内容 |
 |---------|------|
 | [guidelines/](.claude/rust/guidelines/) | 所有権・借用、エラー処理、unsafe、並行処理 |
 | [style/](.claude/rust/style/) | フォーマット、命名規則、アイテム、式、文、型 |
+| [api/](.claude/rust/api/) | API命名、相互運用性、ドキュメント、予測可能性、柔軟性、型安全性、信頼性、デバッグ可能性、将来対応、マクロ |
 | [patterns/](.claude/rust/patterns/) | Builder、Newtype、Typestate、イテレータ |
 | [linting/](.claude/rust/linting/) | Clippy/rustfmt設定 |
 | [cargo/](.claude/rust/cargo/) | Cargo.toml規約 |
