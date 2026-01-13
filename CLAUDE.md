@@ -4,6 +4,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## コマンド
 
+### Go
+
 ```bash
 go build ./...              # ビルド
 go test ./...               # 全テスト
@@ -12,9 +14,22 @@ go test -race ./...         # レース検出
 golangci-lint run           # リント
 ```
 
-## Go開発ガイド
+### Rust
 
-詳細は `.claude/go/` を参照。Uber Go Style Guide準拠。
+```bash
+cargo build                 # ビルド
+cargo build --release       # リリースビルド
+cargo test                  # 全テスト
+cargo test test_name        # 単一テスト
+cargo clippy                # リント
+cargo fmt                   # フォーマット
+```
+
+## 開発ガイド
+
+詳細は `.claude/` を参照。
+
+### Go（Uber Go Style Guide準拠）
 
 | カテゴリ | 内容 |
 |---------|------|
@@ -24,3 +39,14 @@ golangci-lint run           # リント
 | [patterns/](.claude/go/patterns/) | テスト、Functional Options、時間処理 |
 | [linting/](.claude/go/linting/) | golangci-lint設定 |
 | [commands/](.claude/go/commands/) | ビルド、テストコマンド |
+
+### Rust（公式スタイルガイド準拠）
+
+| カテゴリ | 内容 |
+|---------|------|
+| [guidelines/](.claude/rust/guidelines/) | 所有権・借用、エラー処理、unsafe、並行処理 |
+| [style/](.claude/rust/style/) | フォーマット、命名規則、アイテム、式、文、型 |
+| [patterns/](.claude/rust/patterns/) | Builder、Newtype、Typestate、イテレータ |
+| [linting/](.claude/rust/linting/) | Clippy/rustfmt設定 |
+| [cargo/](.claude/rust/cargo/) | Cargo.toml規約 |
+| [commands/](.claude/rust/commands/) | ビルド、テストコマンド |
