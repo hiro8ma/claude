@@ -49,6 +49,14 @@ rust/
     └── test.md              # テスト実行
 ```
 
+## 言語共通アーキテクチャ
+
+[.claude/architecture/](../architecture/) を参照:
+- ヘキサゴナル/クリーンアーキテクチャ
+- ドメイン駆動設計 (DDD)
+- イベント駆動アーキテクチャ
+- モノレポ構成
+
 ## 参考
 
 - [Rust Style Guide](https://github.com/rust-lang/rust/tree/HEAD/src/doc/style-guide/src)
