@@ -5,7 +5,7 @@
 | 識別子 | ケース | 例 |
 |--------|--------|-----|
 | クラス | UpperCamelCase | `MyClass` |
-| インターフェース | UpperCamelCase | `MyInterface` |
+| インターフェース | UpperCamelCase | `User`（`IUser`は不可） |
 | 型エイリアス | UpperCamelCase | `MyType` |
 | 列挙型 | UpperCamelCase | `MyEnum` |
 | 列挙値 | UpperCamelCase | `MyValue` |
@@ -42,6 +42,35 @@ XMLHttpRequest  // ただし既存APIは例外
 
 // Bad
 loadHTTPURL()
+```
+
+## インターフェース名
+
+`I`プレフィックスは使用しない（TypeScript標準ライブラリの慣例）。
+
+```typescript
+// Good
+interface User {}
+interface Fetcher {}
+
+// Bad
+interface IUser {}
+interface IFetcher {}
+```
+
+## ファイル名
+
+`camelCase`を使用。コンポーネントは`PascalCase`も可。
+
+```typescript
+// Good
+utils.ts
+stringHelpers.ts
+Accordion.tsx  // Reactコンポーネント
+
+// Bad
+Utils.ts
+string-helpers.ts
 ```
 
 ## 禁止事項

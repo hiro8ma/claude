@@ -74,6 +74,37 @@ const x = 1
 doSomething()
 ```
 
+## クォート
+
+シングルクォートを優先。エスケープが必要な場合はダブル、複雑な文字列はバッククォート。
+
+```typescript
+// Good
+const name = 'Alice';
+const message = "It's a test";
+const template = `Hello, ${name}!`;
+
+// Avoid
+const name = "Alice";
+```
+
+## インデント
+
+スペース2つ。タブは使用しない。
+
+## 配列型注釈
+
+`T[]`を優先（`Array<T>`よりシンプル）。
+
+```typescript
+// Good
+const items: string[] = [];
+const matrix: number[][] = [];
+
+// Avoid（シンプルな場合）
+const items: Array<string> = [];
+```
+
 ## クラス宣言
 
 セミコロンで終わらせない。

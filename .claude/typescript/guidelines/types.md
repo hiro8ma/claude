@@ -35,18 +35,29 @@ const config: ServerConfig = {
 
 ## interface vs type
 
-構造的な型には`interface`を使用。
+### 使い分け
+
+| 用途 | 推奨 |
+|------|------|
+| オブジェクト構造 | `interface` |
+| ユニオン/交差型 | `type` |
+| `extends`/`implements` | `interface` |
 
 ```typescript
-// Good - interface
+// interface - オブジェクト構造、拡張可能
 interface User {
   id: string;
   name: string;
 }
 
-// type は複合型やユニオンに使用
+interface Admin extends User {
+  role: 'admin';
+}
+
+// type - ユニオン、交差型
 type Status = 'pending' | 'active' | 'inactive';
 type UserOrGuest = User | Guest;
+type UserWithMeta = User & { createdAt: Date };
 ```
 
 ## 配列型
@@ -62,6 +73,27 @@ const items: Array<Map<string, Item>> = [];
 ```
 
 ## Null / Undefined
+
+### 使い分け
+
+- **undefined**: 一般的なデフォルト
+- **null**: API規約やNode.jsコールバック等で必要な場合
+
+```typescript
+// 戻り値の設計 - 構造化を検討
+// Good - 明示的な構造
+function validate(input: string): {valid: boolean; value?: string} {
+  if (input.length > 0) {
+    return {valid: true, value: input};
+  }
+  return {valid: false};
+}
+
+// Avoid - null/undefined を直接返す
+function validate(input: string): string | null {
+  return input.length > 0 ? input : null;
+}
+```
 
 ### オプショナルフィールド
 
@@ -83,7 +115,21 @@ interface User {
 
 ### Nullチェック
 
-使用箇所でのみnull/undefinedを追加。
+`== null`で両方を同時チェック可能。
+
+```typescript
+// null と undefined の両方をチェック
+if (value == null) {
+  // value は null または undefined
+}
+
+// オブジェクトは truthy チェック
+if (user) {
+  console.log(user.name);
+}
+```
+
+### 使用箇所での追加
 
 ```typescript
 // Good - 使用箇所で追加

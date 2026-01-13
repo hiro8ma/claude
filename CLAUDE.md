@@ -74,6 +74,6 @@ npm run format              # フォーマット (Prettier)
 | カテゴリ | 内容 |
 |---------|------|
 | [style/](.claude/typescript/style/) | 命名規則、フォーマット |
-| [guidelines/](.claude/typescript/guidelines/) | 変数、関数、クラス、型システム、制御フロー、禁止事項 |
+| [guidelines/](.claude/typescript/guidelines/) | 変数、関数、クラス、型システム、制御フロー、型定義ファイル、禁止事項 |
 | [linting/](.claude/typescript/linting/) | ESLint/Prettier設定 |
 | [commands/](.claude/typescript/commands/) | ビルド、テストコマンド |

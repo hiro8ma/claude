@@ -16,6 +16,7 @@ typescript/
 │   ├── classes.md           # クラス
 │   ├── types.md             # 型システム
 │   ├── control-flow.md      # 制御フロー
+│   ├── declarations.md      # 型定義ファイル (.d.ts)
 │   └── prohibited.md        # 禁止事項
 │
 ├── linting/             # リンティング
@@ -37,4 +38,6 @@ typescript/
 ## 参考
 
 - [Google TypeScript Style Guide](https://google.github.io/styleguide/tsguide.html)
+- [Basarat's TypeScript Style Guide](https://basarat.gitbook.io/typescript/styleguide)
+- [TypeScript Declaration Files Do's and Don'ts](https://www.typescriptlang.org/docs/handbook/declaration-files/do-s-and-don-ts.html)
 - [TypeScript Handbook](https://www.typescriptlang.org/docs/handbook/)
