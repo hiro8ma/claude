@@ -39,6 +39,14 @@ This repository contains rules and best practices that Claude Code references wh
 | `/refactor <target>` | Refactor specified code |
 | `/fix <issue>` | Fix a reported issue |
 | `/doc <target>` | Generate documentation |
+| `/add <feature>` | Add a new feature |
+| `/search <term>` | Search codebase for term |
+| `/rename <old> <new>` | Rename across codebase |
+| `/debug <issue>` | Debug an issue |
+| `/commit-message` | Generate commit message from staged changes |
+| `/diagram <target>` | Create ASCII diagram |
+| `/migrate <target>` | Migrate code to new version/framework |
+| `/security <target>` | Security audit |
 
 ## Usage
 
