@@ -1,6 +1,6 @@
 # claude
 
-A repository for defining [rulesets](https://code.claude.com/docs/memory), guidelines, and [command skills](https://code.claude.com/docs/skills) for [Claude Code](https://code.claude.com/docs).
+A repository for defining [rulesets](https://code.claude.com/docs/memory), guidelines, [commands](https://code.claude.com/docs/commands), and [skills](https://code.claude.com/docs/skills) for [Claude Code](https://code.claude.com/docs).
 
 ## Overview
 
