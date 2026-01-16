@@ -22,4 +22,5 @@ Apply the contents of this repository to your project to enable Claude Code to g
 ## References
 
 - [Claude Code Documentation](https://docs.anthropic.com/en/docs/claude-code)
+- [Memory (CLAUDE.md)](https://docs.anthropic.com/en/docs/claude-code/memory)
 - [Custom Slash Commands](https://docs.anthropic.com/en/docs/claude-code/slash-commands)
