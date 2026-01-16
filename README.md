@@ -1,6 +1,6 @@
 # claude
 
-A repository for defining rulesets, guidelines, and command skills for Claude Code (claude.ai/code).
+A repository for defining [rulesets](https://code.claude.com/docs/memory), guidelines, and [command skills](https://code.claude.com/docs/skills) for [Claude Code](https://code.claude.com/docs).
 
 ## Overview
 
@@ -18,9 +18,3 @@ This repository contains rules and best practices that Claude Code references wh
 ## Usage
 
 Apply the contents of this repository to your project to enable Claude Code to generate and review code following consistent coding conventions.
-
-## References
-
-- [Claude Code Documentation](https://code.claude.com/docs)
-- [Memory (CLAUDE.md)](https://code.claude.com/docs/memory)
-- [Custom Slash Commands](https://code.claude.com/docs/skills)
