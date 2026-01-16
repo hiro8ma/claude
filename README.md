@@ -10,7 +10,8 @@ This repository contains rules and best practices that Claude Code references wh
 
 - **CLAUDE.md** - Main instruction file for Claude Code
 - **.claude/** - Configuration and guidelines
-  - `commands/` - Custom slash commands and skills
+  - `commands/` - Custom slash commands
+  - `skills/` - Custom skills with arguments
   - `hooks/` - Hook configuration templates
   - `mcp/` - MCP server configuration templates
   - `settings/` - Settings templates
@@ -26,6 +27,11 @@ This repository contains rules and best practices that Claude Code references wh
 | `/review` | Review code changes in current branch |
 | `/explain` | Explain code in a file |
 | `/test` | Run tests for the project |
+
+## Skills
+
+| Skill | Description |
+|-------|-------------|
 | `/refactor <target>` | Refactor specified code |
 | `/fix <issue>` | Fix a reported issue |
 | `/doc <target>` | Generate documentation |
