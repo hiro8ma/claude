@@ -18,3 +18,8 @@ This repository contains rules and best practices that Claude Code references wh
 ## Usage
 
 Apply the contents of this repository to your project to enable Claude Code to generate and review code following consistent coding conventions.
+
+## References
+
+- [Claude Code Documentation](https://docs.anthropic.com/en/docs/claude-code)
+- [Custom Slash Commands](https://docs.anthropic.com/en/docs/claude-code/slash-commands)
