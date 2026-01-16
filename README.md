@@ -1,20 +1,20 @@
 # claude
 
-Claude Code（claude.ai/code）のためのルールセット、ガイドライン、コマンドスキルを定義するリポジトリです。
+A repository for defining rulesets, guidelines, and command skills for Claude Code (claude.ai/code).
 
-## 概要
+## Overview
 
-このリポジトリは、Claude Codeがコードベースで作業する際に参照するルールやベストプラクティスを集約しています。
+This repository contains rules and best practices that Claude Code references when working with codebases.
 
-## 構成
+## Structure
 
-- **CLAUDE.md** - Claude Codeへの主要な指示ファイル
-- **.claude/** - 言語別・カテゴリ別の詳細ガイドライン
-  - `architecture/` - 共通アーキテクチャパターン
-  - `go/` - Go言語のスタイル、ガイドライン、パターン
-  - `rust/` - Rustのスタイル、API設計、パターン
-  - `typescript/` - TypeScriptのスタイル、ガイドライン
+- **CLAUDE.md** - Main instruction file for Claude Code
+- **.claude/** - Detailed guidelines organized by language and category
+  - `architecture/` - Common architecture patterns
+  - `go/` - Go language style, guidelines, and patterns
+  - `rust/` - Rust style, API design, and patterns
+  - `typescript/` - TypeScript style and guidelines
 
-## 使い方
+## Usage
 
-このリポジトリの内容をプロジェクトに適用することで、Claude Codeが一貫したコーディング規約に従ってコードを生成・レビューできるようになります
+Apply the contents of this repository to your project to enable Claude Code to generate and review code following consistent coding conventions.
