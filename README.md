@@ -27,6 +27,10 @@ This repository contains rules and best practices that Claude Code references wh
 | `/review` | Review code changes in current branch |
 | `/explain` | Explain code in a file |
 | `/test` | Run tests for the project |
+| `/lint` | Run linter for the project |
+| `/format` | Format code in the project |
+| `/build` | Build the project |
+| `/status` | Show git status |
 
 ## Skills
 
