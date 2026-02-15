@@ -43,7 +43,7 @@ npm run format              # フォーマット (Prettier)
 
 | カテゴリ | 内容 |
 |---------|------|
-| [architecture/](.claude/architecture/) | ヘキサゴナル/クリーン、DDD、イベント駆動（CQRS、Saga）、モノレポ |
+| [architecture/](.claude/architecture/) | ヘキサゴナル/クリーン、DDD、イベント駆動（CQRS、Saga）、モノレポ、API設計 |
 
 ### Go
 
