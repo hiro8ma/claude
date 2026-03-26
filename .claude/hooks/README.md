@@ -12,70 +12,141 @@ Add hooks to `.claude/settings.json`:
     "PreToolUse": [
       {
         "matcher": "Bash",
-        "command": "echo 'Running Bash command...'"
+        "hooks": [{
+          "type": "command",
+          "command": "echo 'Running Bash command...'"
+        }]
       }
     ],
     "PostToolUse": [
       {
-        "matcher": "Write",
-        "command": "npm run lint --fix $CLAUDE_FILE_PATH"
+        "matcher": "Edit",
+        "hooks": [{
+          "type": "command",
+          "command": "npm run lint --fix"
+        }]
       }
     ]
   }
 }
 ```
+
+## Hook Events
+
+| Hook | Trigger | Block? |
+|------|---------|--------|
+| `SessionStart` | セッション開始時 | No |
+| `SessionEnd` | セッション終了時 | No |
+| `InstructionsLoaded` | CLAUDE.md読み込み後 | No |
+| `UserPromptSubmit` | ユーザー入力送信時 | Yes |
+| `PreToolUse` | ツール実行前 | Yes |
+| `PostToolUse` | ツール実行後 | Yes |
+| `PermissionRequest` | 権限要求時 | Yes |
+| `SubagentStart` | サブエージェント開始時 | No (inject only) |
+| `SubagentStop` | サブエージェント終了時 | Yes |
+| `TeammateIdle` | チームメイトがアイドル化前 | Yes (exit 2 = continue) |
+| `TaskCompleted` | タスク完了時 | Yes (exit 2 = block) |
+| `Notification` | 通知送信時 | No |
 
 ## Hook Types
 
-| Hook | Trigger |
-|------|---------|
-| `PreToolUse` | Before a tool is executed |
-| `PostToolUse` | After a tool completes |
-| `Notification` | When Claude sends a notification |
+```json
+{
+  "hooks": [{
+    "type": "command",
+    "command": "bash scripts/validate.sh"
+  }]
+}
+```
+
+```json
+{
+  "hooks": [{
+    "type": "agent",
+    "agentPath": ".claude/agents/code-quality.md"
+  }]
+}
+```
+
+## Agent Teams 用 Hooks
+
+### TeammateIdle — 品質ゲート
+
+```json
+{
+  "hooks": {
+    "TeammateIdle": [{
+      "hooks": [{
+        "type": "command",
+        "command": "bash scripts/validate-teammate.sh"
+      }]
+    }]
+  }
+}
+```
+
+Exit code 2 でフィードバックを返して作業を継続させる。
+
+### TaskCompleted — テスト検証
+
+```json
+{
+  "hooks": {
+    "TaskCompleted": [{
+      "hooks": [{
+        "type": "command",
+        "command": "npm test"
+      }]
+    }]
+  }
+}
+```
 
 ## Examples
 
-### Auto-format on file write
+### Notification (macOS)
 
 ```json
 {
   "hooks": {
-    "PostToolUse": [
-      {
-        "matcher": "Write",
-        "command": "prettier --write $CLAUDE_FILE_PATH"
-      }
-    ]
+    "Notification": [{
+      "hooks": [{
+        "type": "command",
+        "command": "osascript -e 'display notification \"Claude Code\" with title \"Claude Code\" sound name \"Glass\"'"
+      }]
+    }]
   }
 }
 ```
 
-### Run tests after code changes
+### Auto-format on edit
 
 ```json
 {
   "hooks": {
-    "PostToolUse": [
-      {
-        "matcher": "Write|Edit",
-        "command": "npm test"
-      }
-    ]
+    "PostToolUse": [{
+      "matcher": "Edit",
+      "hooks": [{
+        "type": "command",
+        "command": "npx prettier --write {{filePath}}"
+      }]
+    }]
   }
 }
 ```
 
-### Lint before commit
+### Pre-commit lint
 
 ```json
 {
   "hooks": {
-    "PreToolUse": [
-      {
-        "matcher": "Bash(git commit)",
+    "PreToolUse": [{
+      "matcher": "Bash(git commit:*)",
+      "hooks": [{
+        "type": "command",
         "command": "npm run lint"
-      }
-    ]
+      }]
+    }]
   }
 }
 ```
