@@ -67,7 +67,7 @@ Edit: STOP = 1 → FINISH_REASON_STOP = 1
 
 ```bash
 cat > /tmp/reply.json <<'EOF'
-{"body":"対応しました（839bcdda2）。`package aiagent.v1;` に変更。","in_reply_to":3110355687}
+{"body":"対応しました（abc1234）。`package foo.v1;` に変更。","in_reply_to":1234567890}
 EOF
 
 gh api repos/OWNER/REPO/pulls/NUMBER/comments \
